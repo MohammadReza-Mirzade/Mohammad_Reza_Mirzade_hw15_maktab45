@@ -1,0 +1,1 @@
+SELECT last_name, age, COUNT(id) FROM persons GROUP BY age, last_name;

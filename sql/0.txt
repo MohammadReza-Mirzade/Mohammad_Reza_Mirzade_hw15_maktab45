@@ -1,0 +1,1 @@
+INSERT INTO persons VALUES ('Mohammad', 'Mirzade', 18), ('Ali', 'Mirzade', 30), ('Reza', 'Mirzade', 75), ('MohammadReza', 'Mirzade', 18), ('AliReza', 'Mirzade', 21), ('MohammadReza', 'Rahmati', 35), ('Ahmad', 'Alimoradi', 80), ('Hamid', 'Alimoradi', 19), ('Aref', 'Rahmati', 12), ('Ali', 'Alimoradi', 5);
