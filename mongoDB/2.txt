@@ -1,0 +1,93 @@
+> use company
+switched to db company
+> db.createCollection("employees")
+{ "ok" : 1 }
+> db.employees.insertMany([{name: "Aref", email: "aref@gmail.com"},{name: "Jon", email: "jon@gmail.com"},{name: "Ali", email: "reza@gmail.com"},{name: "Ali", email: "ali@gmail.com"},{name: "Mohammad", email: "mohammad@gmail.com"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("603dfa06d3bfcae0961f9db3"),
+                ObjectId("603dfa06d3bfcae0961f9db4"),
+                ObjectId("603dfa06d3bfcae0961f9db5"),
+                ObjectId("603dfa06d3bfcae0961f9db6"),
+                ObjectId("603dfa06d3bfcae0961f9db7")
+        ]
+}
+> db.employees.find({}).pretty()
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db3"),
+        "name" : "Aref",
+        "email" : "aref@gmail.com"
+}
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db4"),
+        "name" : "Jon",
+        "email" : "jon@gmail.com"
+}
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db5"),
+        "name" : "Ali",
+        "email" : "reza@gmail.com"
+}
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db6"),
+        "name" : "Ali",
+        "email" : "ali@gmail.com"
+}
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db7"),
+        "name" : "Mohammad",
+        "email" : "mohammad@gmail.com"
+}
+> db.employees.updateMany({},{$set: {phone: "091"}})
+{ "acknowledged" : true, "matchedCount" : 5, "modifiedCount" : 5 }
+> db.employees.find({}).pretty()
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db3"),
+        "name" : "Aref",
+        "email" : "aref@gmail.com",
+        "phone" : "091"
+}
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db4"),
+        "name" : "Jon",
+        "email" : "jon@gmail.com",
+        "phone" : "091"
+}
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db5"),
+        "name" : "Ali",
+        "email" : "reza@gmail.com",
+        "phone" : "091"
+}
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db6"),
+        "name" : "Ali",
+        "email" : "ali@gmail.com",
+        "phone" : "091"
+}
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db7"),
+        "name" : "Mohammad",
+        "email" : "mohammad@gmail.com",
+        "phone" : "091"
+}
+> db.employees.updateOne({email: "reza@gmail.com"},{$set: {name: "Reza"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.employees.deleteOne({name: "Reza"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.employees.deleteMany({name: {$regex: "A"}})
+{ "acknowledged" : true, "deletedCount" : 2 }
+> db.employees.find({}).pretty()
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db4"),
+        "name" : "Jon",
+        "email" : "jon@gmail.com",
+        "phone" : "091"
+}
+{
+        "_id" : ObjectId("603dfa06d3bfcae0961f9db7"),
+        "name" : "Mohammad",
+        "email" : "mohammad@gmail.com",
+        "phone" : "091"
+}
